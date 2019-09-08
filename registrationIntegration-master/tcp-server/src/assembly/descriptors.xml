@@ -1,0 +1,53 @@
+<assembly>
+    <id>bin</id>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+    <fileSets>
+        <!--copy executable scripts to bin directory-->
+        <fileSet>
+            <directory>${project.build.directory}/appassembler/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <includes>
+                <include>**</include>
+            </includes>
+            <fileMode>0755</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}/generated-resources/appassembler/jsw/${artifactId}/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <includes>
+                <include>**</include>
+            </includes>
+            <fileMode>0755</fileMode>
+        </fileSet>
+
+        <!--copy jar executables-->
+        <fileSet>
+            <directory>${project.build.directory}/generated-resources/appassembler/jsw/${artifactId}/lib</directory>
+            <outputDirectory>lib</outputDirectory>
+            <includes>
+                <include>**</include>
+            </includes>
+            <fileMode>0755</fileMode>
+        </fileSet>
+
+        <!--include conf directory-->
+        <fileSet>
+            <directory>${project.build.directory}/generated-resources/appassembler/jsw/${artifactId}/conf</directory>
+            <outputDirectory>conf</outputDirectory>
+            <includes>
+                <include>**</include>
+            </includes>
+        </fileSet>
+
+        <!--include logs directory-->
+        <fileSet>
+            <directory>${project.build.directory}/appassembler/logs</directory>
+            <outputDirectory>logs</outputDirectory>
+            <includes>
+                <include>**</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>
