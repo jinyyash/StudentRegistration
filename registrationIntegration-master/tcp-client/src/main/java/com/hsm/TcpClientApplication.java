@@ -2,6 +2,7 @@ package com.hsm;
 
 import com.google.gson.JsonObject;
 import com.hsm.tcpClient.Service.MessageService;
+import com.hsm.tcpClient.codette.EncodeToJson;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +17,18 @@ import java.util.Scanner;
  *
  */
 @SpringBootApplication
-public class App implements CommandLineRunner
+public class TcpClientApplication implements CommandLineRunner
 {
     @Autowired
     private MessageService messageService;
-    private final static Logger logger= LogManager.getLogger(App.class);
-
+    private final static Logger logger= LogManager.getLogger(TcpClientApplication.class);
+    @Autowired
+    private EncodeToJson encodeToJson;
 
     public static void main( String[] args )
     {
 
-        SpringApplication application =new SpringApplication(App.class);
+        SpringApplication application =new SpringApplication(TcpClientApplication.class);
         application.run(args);
 
     }
@@ -43,22 +45,25 @@ public class App implements CommandLineRunner
         while (true) {
             logger.info("Enter New Student details");
             logger.info("Enter Student National Identity card Number");
-            nic = scanner.nextLine();
+
+            do{
+                nic = scanner.nextLine();
+                logger.info("nic length is too long \n Re enter Student National Identity card Number");
+
+            }while(nic.length()>10 || nic.equals(null));
+
             logger.info("Enter Student Name");
             name = scanner.nextLine();
             logger.info("Enter Student Address");
             address = scanner.nextLine();
             logger.info("Enter Student Telephone Number");
-            tel = scanner.nextLine();
+            do{
+                logger.info("phone number length is too long \n Re enter Student Telephone Number");
+                tel = scanner.nextLine();
+            }while(nic.length()>10);
 
-            //creating student json object
-            JsonObject student = new JsonObject();
-            student.addProperty("nic", nic);
-            student.addProperty("name", name);
-            student.addProperty("address", address);
-            student.addProperty("tel", tel);
-            System.out.println(student.toString());
 
+            JsonObject student=encodeToJson.encodeStringToJson(nic,name,address,tel);
             messageService.sendMessage(student);
         }
 

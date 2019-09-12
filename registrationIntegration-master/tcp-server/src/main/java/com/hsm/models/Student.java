@@ -6,6 +6,17 @@ public class Student {
     private String address;
     private String tel;
 
+    public Student() {
+        this.nic = nic;
+    }
+
+    public Student(String nic, String name, String address, String tel) {
+        this.nic = nic;
+        this.name = name;
+        this.address = address;
+        this.tel = tel;
+    }
+
     public String getNic() {
         return nic;
     }

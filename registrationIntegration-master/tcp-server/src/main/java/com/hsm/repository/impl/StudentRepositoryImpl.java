@@ -11,11 +11,11 @@ public class StudentRepositoryImpl implements StudentRepository {
     //to use spring configured datasource and jdbc template
     // To use it, just @Autowired
     @Autowired
-
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public int save(Student student) {
+    public boolean save(Student student) {
         return jdbcTemplate.update("insert into student values(?,?,?,?)", student.getNic(), student.getName(),
-                student.getAddress(), student.getTel());    }
+                student.getAddress(), student.getTel())>0;
+    }
 }
