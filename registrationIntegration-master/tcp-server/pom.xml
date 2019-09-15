@@ -17,8 +17,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>9</maven.compiler.source>
-    <maven.compiler.target>9</maven.compiler.target>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
   </properties>
 
   <dependencies>
@@ -164,7 +164,7 @@
         <!--the set of programs that bin files will be generated for-->
         <programs>
           <program>
-            <mainClass>com.hsm.App</mainClass>
+            <mainClass>com.hsm.WebClientApplication</mainClass>
             <id>app</id>
           </program>
         </programs>
@@ -196,7 +196,7 @@
             <daemons>
               <daemon>
                 <id>${artifactId}</id>
-                <wrapperMainClass>com.hsm.App</wrapperMainClass>
+                <wrapperMainClass>com.hsm.WebClientApplication</wrapperMainClass>
                 <generatorConfigurations>
                   <generatorConfiguration>
                     <generator>jsw</generator>
@@ -229,7 +229,7 @@
         <appendAssemblyId>false</appendAssemblyId>
         <archive>
           <manifest>
-            <mainClass>com.hsm.App</mainClass>
+            <mainClass>com.hsm.WebClientApplication</mainClass>
           </manifest>
         </archive>
         <descriptors>
