@@ -1,4 +1,4 @@
-package com.hsm.tcpClient.config;
+package com.hsm.tcpclient.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationEventPublisher;

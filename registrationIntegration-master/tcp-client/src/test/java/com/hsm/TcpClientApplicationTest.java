@@ -1,7 +1,7 @@
 package com.hsm;
 
 import com.google.gson.JsonObject;
-import com.hsm.tcpClient.Service.MessageService;
+import com.hsm.tcpclient.service.MessageService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -9,7 +9,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import static org.mockito.Mockito.*;
 

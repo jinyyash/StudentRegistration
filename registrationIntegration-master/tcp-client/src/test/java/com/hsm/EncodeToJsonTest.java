@@ -1,7 +1,7 @@
 package com.hsm;
 
 import com.google.gson.JsonObject;
-import com.hsm.tcpClient.codette.EncodeToJson;
+import com.hsm.tcpclient.codette.EncodeToJson;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

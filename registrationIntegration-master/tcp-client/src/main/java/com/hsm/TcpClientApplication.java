@@ -1,8 +1,8 @@
 package com.hsm;
 
-import com.google.gson.JsonObject;
-import com.hsm.tcpClient.Service.MessageService;
-import com.hsm.tcpClient.codette.EncodeToJson;
+import com.hsm.tcpclient.service.MessageService;
+import com.hsm.tcpclient.codette.EncodeToJson;
+import com.hsm.tcpclient.models.Student;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,8 +62,7 @@ public class TcpClientApplication implements CommandLineRunner
                 tel = scanner.nextLine();
             }while(nic.length()>10);
 
-
-            JsonObject student=encodeToJson.encodeStringToJson(nic,name,address,tel);
+            Student student=new Student(nic,name,address,tel);
             messageService.sendMessage(student);
         }
 

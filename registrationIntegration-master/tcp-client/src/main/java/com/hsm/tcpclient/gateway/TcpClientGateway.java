@@ -1,4 +1,4 @@
-package com.hsm.tcpClient.gateway;
+package com.hsm.tcpclient.gateway;
 
 import org.springframework.integration.annotation.MessagingGateway;
 import org.springframework.stereotype.Component;

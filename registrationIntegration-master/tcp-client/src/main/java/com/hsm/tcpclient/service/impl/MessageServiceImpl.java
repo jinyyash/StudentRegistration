@@ -1,8 +1,9 @@
-package com.hsm.tcpClient.Service.impl;
+package com.hsm.tcpclient.service.impl;
 
-import com.google.gson.JsonObject;
-import com.hsm.tcpClient.Service.MessageService;
-import com.hsm.tcpClient.gateway.TcpClientGateway;
+import com.hsm.tcpclient.service.MessageService;
+import com.hsm.tcpclient.codette.EncodeToJson;
+import com.hsm.tcpclient.gateway.TcpClientGateway;
+import com.hsm.tcpclient.models.Student;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,8 @@ public class MessageServiceImpl implements MessageService {
     private final static Logger logger= LogManager.getLogger(MessageService.class);
 
     private TcpClientGateway tcpClientGateway;
-
+    @Autowired
+    private EncodeToJson encodeToJson;
     @Autowired
     public MessageServiceImpl(TcpClientGateway tcpClientGateway) {
 
@@ -23,8 +25,8 @@ public class MessageServiceImpl implements MessageService {
     }
 
 
-    public void sendMessage(JsonObject jsonObject) {
-        String message = jsonObject.toString();
+    public void sendMessage(Student student) {
+        String message =encodeToJson.encodeStudentToJsonString(student) ;
         logger.info("Send message: {}", message);
         byte[] responseBytes = tcpClientGateway.send(message.getBytes());
         String response = new String(responseBytes);

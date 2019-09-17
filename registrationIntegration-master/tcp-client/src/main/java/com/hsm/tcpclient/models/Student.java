@@ -1,4 +1,4 @@
-package com.hsm.models;
+package com.hsm.tcpclient.models;
 
 import java.io.Serializable;
 
@@ -9,7 +9,7 @@ public class Student implements Serializable {
     private String tel;
 
     public Student() {
-        this.nic = nic;
+
     }
 
     public Student(String nic, String name, String address, String tel) {
