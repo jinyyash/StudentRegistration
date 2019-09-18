@@ -1,4 +1,4 @@
-package com.hsm.models;
+package com.hsm.tcpclient.models;
 
 import java.io.Serializable;
 
@@ -6,7 +6,6 @@ public class User implements Serializable {
     private String userName;
     private String password;
     private String role;
-
 
 
     public String getUserName() {

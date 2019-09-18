@@ -15,7 +15,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    private final String QUERY = "SELECT * from user where username = ?";
+    private final String QUERY = "SELECT * from user where user_name = ?";
 
 
     @Override
@@ -26,7 +26,6 @@ public class UserRepositoryImpl implements UserRepository {
     private static final class UserMapper implements RowMapper<User> {
         public User mapRow(ResultSet rs, int rowNum) throws SQLException {
             User user=new User();
-            user.setId(rs.getLong("id"));
             user.setUserName(rs.getString("user_name"));
             user.setPassword(rs.getString("password"));
             user.setRole(rs.getString("role"));

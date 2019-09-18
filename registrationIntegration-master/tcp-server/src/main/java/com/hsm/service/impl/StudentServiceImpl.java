@@ -2,8 +2,10 @@ package com.hsm.service.impl;
 
 import com.hsm.codette.DecodeJson;
 import com.hsm.models.Student;
+import com.hsm.models.User;
 import com.hsm.repository.StudentRepository;
 import com.hsm.service.StudentService;
+import com.hsm.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,21 +22,34 @@ public class StudentServiceImpl implements StudentService {
     StudentRepository studentRepository;
 
     @Autowired
+    UserService userService;
+
+    @Autowired
     DecodeJson decodeJson;
 
     @Override
     public byte[] processMessage(byte[] message) throws IOException, SQLException, ClassNotFoundException {
         String messageContent = new String(message);
         boolean sucess= false;
+        String msg="";
         LOGGER.info("Receive message: {}", messageContent);
-        Student student = decodeJson.decodeJsonToStudent(messageContent);
-        sucess = save(student);
-        String msg=" ___________________";
-        if(sucess){
-            msg="student added sucessfully";
+        if(message.length>10){
+            Student student = decodeJson.decodeJsonToStudent(messageContent);
+            sucess = save(student);
+            if(sucess){
+                msg="student added sucessfully";
+            }else{
+                msg="oops something wrong"; }
         }else{
-            msg="oops something wrong";
+            User user= userService.findByUsername(messageContent);
+            if(user!=null){
+                msg=decodeJson.decodeUserToJson(user);
+            }else{
+                msg="";
+            }
+
         }
+
         return msg.getBytes();
     }
 

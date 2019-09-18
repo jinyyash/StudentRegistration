@@ -16,7 +16,6 @@ public class DecodeJson {
     }
     public String decodeUserToJson(User user){
         JsonObject userJson=new JsonObject();
-        userJson.addProperty("id",user.getId());
         userJson.addProperty("userName",user.getUserName());
         userJson.addProperty("password",user.getPassword());
         userJson.addProperty("role",user.getRole());

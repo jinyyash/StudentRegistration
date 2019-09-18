@@ -33,5 +33,12 @@ public class MessageServiceImpl implements MessageService {
         logger.info("Receive response: {}", response);
     }
 
+    @Override
+    public String sendUserDetails(String userName) {
+        byte[] responseBytes = tcpClientGateway.send(userName.getBytes());
+        String response = new String(responseBytes);
+        return response;
+    }
+
 
 }

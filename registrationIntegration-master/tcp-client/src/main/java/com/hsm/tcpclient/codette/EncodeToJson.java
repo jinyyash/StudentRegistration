@@ -1,8 +1,12 @@
 package com.hsm.tcpclient.codette;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonObject;
 import com.hsm.tcpclient.models.Student;
+import com.hsm.tcpclient.models.User;
 import org.springframework.stereotype.Component;
+
+import java.io.IOException;
 
 @Component
 public class EncodeToJson {
@@ -22,5 +26,14 @@ public class EncodeToJson {
         studentJ.addProperty("address", student.getAddress());
         studentJ.addProperty("tel", student.getTel());
         return studentJ.toString();
+    }
+    public User encodeUserStringToJson(String jsonString) throws IOException {
+        if(jsonString.equals("")){
+            return null;
+        }else{
+            ObjectMapper mapper=new ObjectMapper();
+            return mapper.readValue(jsonString, User.class);
+        }
+
     }
 }

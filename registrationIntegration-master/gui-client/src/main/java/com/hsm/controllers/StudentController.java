@@ -19,8 +19,8 @@ public class StudentController {
     }
 
    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String addStudentToDb(@RequestBody Student student){
+    public void addStudentToDb(@RequestBody Student student){
+       System.out.println(student.getName());
         messageService.sendMessage(student);
-        return "addStudent";
     }
 }
