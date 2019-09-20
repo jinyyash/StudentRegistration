@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class MessageServiceImpl implements MessageService {
 
     private final static Logger logger= LogManager.getLogger(MessageService.class);
-
+    public static  String RESPONSE;
     private TcpClientGateway tcpClientGateway;
     @Autowired
     private EncodeToJson encodeToJson;
@@ -29,8 +29,8 @@ public class MessageServiceImpl implements MessageService {
         String message =encodeToJson.encodeStudentToJsonString(student) ;
         logger.info("Send message: {}", message);
         byte[] responseBytes = tcpClientGateway.send(message.getBytes());
-        String response = new String(responseBytes);
-        logger.info("Receive response: {}", response);
+         RESPONSE = new String(responseBytes);
+        logger.info("Receive response: {}", RESPONSE);
     }
 
     @Override

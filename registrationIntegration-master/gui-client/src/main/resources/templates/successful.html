@@ -5,8 +5,7 @@
     <title>Example auth app</title>
 </head>
 <body>
-
-<h1 th:inline="text">[[${#httpServletRequest.remoteUser}]]! </h1>
+<h1 th:inline="text">[[${T(com.hsm.tcpclient.service.impl.MessageServiceImpl).RESPONSE}]]!</h1>
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Sign Out"/>
 </form>

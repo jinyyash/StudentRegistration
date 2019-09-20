@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
@@ -7,7 +6,7 @@
 </head>
 <body>
 
-<form th:object="${student}" th:action="@{/save}" method="post">
+<form th:action="@{/save}" method="post">
     National Identity Card (NIC) Number:<br>
     <input type="text" name="nic"><br>
     Name:<br>
@@ -16,7 +15,7 @@
     <input type="text" name="address"><br>
     Contact Number:<br>
     <input type="text" name="tel"><br>
-    <div><input type="submit" value="submit"/></div>
+    <div><input type="submit" value="Submit"/></div>
 </form>
 </body>
 </html>

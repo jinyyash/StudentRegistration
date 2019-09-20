@@ -5,7 +5,6 @@ import com.hsm.tcpclient.service.MessageService;
 import com.hsm.tcpclient.models.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -19,8 +18,9 @@ public class StudentController {
     }
 
    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public void addStudentToDb(@RequestBody Student student){
+    public String addStudentToDb(@ModelAttribute Student student){
        System.out.println(student.getName());
         messageService.sendMessage(student);
+        return "successful";
     }
 }
